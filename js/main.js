@@ -126,7 +126,33 @@ const elementItems = document.querySelector('.items');
 
 //  dichiaro una variabile che sarà definita con una array che al suo interno avra i nomi delle immagini
 
-const img = ['01', '02', '03', '04', '05'];
+const banner = [
+  {
+    img: '01.jpg',
+    title: 'titolo1',
+    description: 'descrizione1',
+  },
+  {
+    img: '02.jpg',
+    title: 'titolo2',
+    description: 'descrizione2',
+  },
+  {
+    img: '03.jpg',
+    title: 'titolo3',
+    description: 'descrizione3',
+  },
+  {
+    img: '04.jpg',
+    title: 'titolo4',
+    description: 'descrizione4',
+  },
+  {
+    img: '05.jpg',
+    title: 'titolo51',
+    description: 'descrizione5',
+  },
+];
 
 // prima e fuori dal ciclo for dichiaro una variabile active e la definisco con il valore 0.
 let elementActive = 0;
@@ -134,24 +160,30 @@ let elementActive = 0;
 // tramite un ciclo for posso far scorrere i valori all'interno del'array immagini cosi facendo ad ogni ciclo nel template literal ci sarà un immagine diversa
 // (la quantita di cicli sarà definita dalla lunchezza dell'array immagini)
 
-for (let i = 0; i < img.length; i++) {
+for (let i = 0; i < banner.length; i++) {
   // con un inner html nella classe items inserisco un template literal che conterra un div con classe item che a sua volta avrà un immagine al suo interno
 
   // Tramite una condizione all'interno del ciclo vado a inserire la classe active in item grazie alla posizione attuale data da i(contatore del ciclo) e elementActive
   if (i === elementActive) {
     elementItems.innerHTML += `
       <div class="item active">
-        <img src="./img/${img[i]}.jpg " alt="" />
+        <img src="./img/${banner[i].img} " alt="" />
+        <h2>${banner[i].title}</h2>
+        <p>${banner[i].description}</p>
       </div>
       `;
+    console.log('2');
   } else {
     elementItems.innerHTML =
       elementItems.innerHTML +
       `
         <div class="item ">
-          <img src="./img/${img[i]}.jpg " alt="" />
+          <img src="./img/${banner[i].img} " alt="" />
+          <h2>${banner[i].title}</h2>
+          <p>${banner[i].description}</p>
         </div>
         `;
+    console.log('1');
   }
 }
 
@@ -160,14 +192,15 @@ for (let i = 0; i < img.length; i++) {
 
 const elementSideBox = document.querySelector('.side-box');
 
-for (let i = 0; i < img.length; i++) {
+for (let i = 0; i < banner.length; i++) {
   // nel caso dell'immagine on-focus aggiungeremo un bordo al box piccolo
 
   if (i === elementActive) {
     elementSideBox.innerHTML += `
       <div class="item">
-            <div class="on-focus"></div>
-            <img src="./img/${img[i]}.jpg " alt="" />
+          <div class="on-focus"></div>
+            <img src="./img/${banner[i].img} " alt="" />
+            
           </div>
       `;
   }
@@ -176,8 +209,9 @@ for (let i = 0; i < img.length; i++) {
   else {
     elementSideBox.innerHTML += `
       <div class="item">
-            <div class="off-focus"></div>
-            <img src="./img/${img[i]}.jpg " alt="" />
+          <div class="off-focus"></div>
+            <img src="./img/${banner[i].img} " alt="" />
+            
           </div>
       `;
   }
