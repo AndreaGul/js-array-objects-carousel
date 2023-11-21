@@ -168,29 +168,44 @@ for (let i = 0; i < banner.length; i++) {
     elementItems.innerHTML += `
       <div class="item active">
         <img src="./img/${banner[i].img} " alt="" />
-        <h2>${banner[i].title}</h2>
-        <p>${banner[i].description}</p>
+        <div class="text">
+          <h2>${banner[i].title}</h2>
+          <p>${banner[i].description}</p>
+          </div>
       </div>
       `;
-    console.log('2');
   } else {
     elementItems.innerHTML =
       elementItems.innerHTML +
       `
         <div class="item ">
           <img src="./img/${banner[i].img} " alt="" />
+          <div class="text">
           <h2>${banner[i].title}</h2>
           <p>${banner[i].description}</p>
+          </div>
         </div>
         `;
-    console.log('1');
   }
 }
 
 // BONUS 2;
 // Tutte le miniature avranno un layer di opacità scura, tranne quella corrispondente all’immagine attiva, che invece avrà un bordo colorato.
 
-const elementSideBox = document.querySelector('.side-box');
+// const elementSideBox = document.querySelector('.side-box');
+
+//aggiunta degli elementi side-box prev e next nella pagina dopo che abbiamo inserito le immagini principali
+const elementSideBox = document.createElement('div');
+elementSideBox.classList.add('side-box');
+
+elementItems.append(elementSideBox);
+
+const elementSideBoxPrev = document.createElement('div');
+elementSideBoxPrev.classList.add('prev');
+const elementSideBoxNext = document.createElement('div');
+elementSideBoxNext.classList.add('next');
+elementSideBox.append(elementSideBoxPrev);
+elementSideBox.append(elementSideBoxNext);
 
 for (let i = 0; i < banner.length; i++) {
   // nel caso dell'immagine on-focus aggiungeremo un bordo al box piccolo
