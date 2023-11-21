@@ -1,19 +1,30 @@
 'use strict';
 //dopo 3 secondi le immagini cambiano automaticamente
 let avanti = setInterval(fnAvanti, 3000);
+let indietro;
 
+const back = document.getElementById('back');
 const start = document.getElementById('start');
 const stop = document.getElementById('stop');
 
 //Al click faccio scorrere le immagini
 start.addEventListener('click', function () {
   clearInterval(avanti);
+  clearInterval(indietro);
   avanti = setInterval(fnAvanti, 3000);
+});
+
+//Al click faccio scorrere le immagini
+back.addEventListener('click', function () {
+  clearInterval(indietro);
+  clearInterval(avanti);
+  indietro = setInterval(fnIndietro, 3000);
 });
 
 //Al click su stop fermo lo scorrimento delle immagini
 stop.addEventListener('click', function () {
   clearInterval(avanti);
+  clearInterval(indietro);
 });
 
 function fnAvanti() {
@@ -168,7 +179,7 @@ for (let i = 0; i < banner.length; i++) {
     elementItems.innerHTML += `
       <div class="item active">
         <img src="./img/${banner[i].img} " alt="" />
-        <div class="text">
+         <div class="text">
           <h2>${banner[i].title}</h2>
           <p>${banner[i].description}</p>
           </div>
